@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "fotosApp"
+    }
+  },
+  "defaultProject": "fotosApp",
+  "cli": {
+    "analytics": "ffb070ca-3e4c-42ae-b3b3-a716b0f72876"
+  }
 }
