@@ -1,3 +1,4 @@
+import { FileItem } from '../models/file-item';
 import { Directive, EventEmitter, ElementRef,
          HostListener, Input, Output } from '@angular/core';
 
@@ -5,6 +6,8 @@ import { Directive, EventEmitter, ElementRef,
   selector: '[appNgDropFiles]'
 })
 export class NgDropFilesDirective {
+
+  @Input() archivos: FileItem[] = [];
 
   @Output() mouseSobre: EventEmitter<boolean> = new EventEmitter();
 
@@ -20,4 +23,31 @@ export class NgDropFilesDirective {
     this.mouseSobre.emit( false );
   }
 
+
+  // Validaciones
+  private _archivoPuedeSerCargado( archivo: File ): boolean {
+    if ( !this._archivoYaFueDroppeado( archivo.name ) && this._esImagen( archivo.type ) ) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  private _prevenirDetener( event ){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  private _archivoYaFueDroppeado( nombreArchivo: string ): boolean {
+    for ( const archivo of this.archivos ){
+      if ( archivo.nombreArchivo === nombreArchivo ) {
+        console.log('El Archivo ' + nombreArchivo + ' Ya Existe' );
+        return true;
+      }
+    }
+    return false;
+  }
+  private _esImagen( tipoArchivo: string ): boolean {
+    return ( tipoArchivo === '' || tipoArchivo === undefined ) ? false : tipoArchivo.startsWith('image');
+  }
 }
