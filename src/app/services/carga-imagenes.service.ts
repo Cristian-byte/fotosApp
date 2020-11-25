@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FileItem } from '../models/file-item';
 import '@firebase/auth';
-import * as firebase from 'firebase';
+import { firebase } from '@firebase/app';
 
 
 @Injectable({
