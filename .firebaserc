@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fir-fotos-f17b7": {
+      "hosting": {
+        "fotosApp": [
+          "fir-fotos-f17b7"
+        ]
+      }
+    }
+  }
+}
